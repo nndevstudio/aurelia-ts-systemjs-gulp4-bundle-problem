@@ -5,6 +5,9 @@ const bundleModule = require('./bundle');
 const exportModule = require('./export-release');
 const buildModule = require('./build');
 
+// this task utilizes the browsersync plugin
+// to create a dev server instance
+// at http://localhost:9000
 function serve(done) {
   browserSync({
     online: false,
@@ -22,6 +25,9 @@ function serve(done) {
 serve.displayName = "Serve";
 serve.description = "Custom SERVE function";
 
+// this task utilizes the browsersync plugin
+// to create a dev server instance
+// at http://localhost:9000
 function serveBundle(done) {
   browserSync({
     online: false,
@@ -39,6 +45,9 @@ function serveBundle(done) {
 serveBundle.displayName = "Serve bundle";
 serveBundle.description = "Custom SERVE BUNDLE function";
 
+// this task utilizes the browsersync plugin
+// to create a dev server instance
+// at http://localhost:9000
 function serveExport(done) {
   browserSync({
     online: false,

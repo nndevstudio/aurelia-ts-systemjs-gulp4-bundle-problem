@@ -74,7 +74,8 @@ exports.buildSystem = series(buildSystem);
 exports.buildHtml = series(buildHtml);
 exports.buildStyles = series(buildStyles);
 
-exports.default = series(cleanModule.default, parallel(buildSystem, buildHtml, buildStyles));
+//exports.default = series(cleanModule.default, parallel(buildSystem, buildHtml, buildStyles));
+exports.default = series(cleanModule.default, series(buildSystem, buildHtml, buildStyles));
 
 
 

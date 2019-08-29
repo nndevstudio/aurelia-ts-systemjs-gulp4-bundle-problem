@@ -1,11 +1,32 @@
 module.exports = {
-    "bundles": {  
+  "bundles": {  
+        "dist/app-build": {
+          "includes": [
+            "[**/*.js]",
+            "**/*.html!text"
+          ],
+          "excludes": [
+            "[pages/login/index.js]",
+            "[pages/login/index.html!text]",
+            "[components/routers/login.js]",
+            "[components/routers/login.html!text]",
+            "[main.js]"
+          ],
+          "options": {
+            "inject": true,
+            "minify": true,
+            "depCache": true,
+            "rev": true
+          }
+        },
+
         "dist/app-build-public": {
             "includes": [ 
                "[pages/login/index.js]",
                "[pages/login/index.html!text]",         
                "[components/routers/login.js]",
-               "[components/routers/login.html!text]" 
+               "[components/routers/login.html!text]",
+               "[main.js]"
             ],           
             "options": {
                 "inject": true,

@@ -21,7 +21,7 @@ unbundle.description = "Custom UNBUNDLE function";
 
 ////deletes all files in the output path
 function clean() {  
-  return src([paths.output])
+  return src([paths.output], { allowEmpty: true })
     .pipe(vinylPaths(del));
 }
 clean.displayName = "Clean";

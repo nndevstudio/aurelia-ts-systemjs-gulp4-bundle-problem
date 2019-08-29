@@ -24,7 +24,7 @@ function getExportList() {
 }
 
 function normalizeExportPaths() {
-  const pathsToNormalize = resources.normalize;
+  const pathsToNormalize = resources.normalize;//from export.js normalize
 
   let promises =  pathsToNormalize.map(pathSet => {
     const packageName = pathSet[ 0 ];
@@ -43,11 +43,11 @@ function normalizeExportPaths() {
 }
 
 function cleanExport () {
-  return src([paths.exportSrv])
+  return src([paths.exportSrv], { allowEmpty: true })
     .pipe(vinylPaths(del));
 }
 function exportCopy () {
-  return src(getExportList(), { base: '.' })
+  return src(getExportList(), { base: '.', allowEmpty: true })
     .pipe(dest(paths.exportSrv));
 }
 function exportNormalizedResources () {
@@ -69,5 +69,8 @@ function renameOidcClient(done) {
   });
 }
 
+//exports.default = exports.export = series(bundleModule.default, copyOidcClient, renameOidcClient,
+//  cleanExport, exportNormalizedResources, exportCopy);
 exports.default = exports.export = series(bundleModule.default, copyOidcClient, renameOidcClient,
-  cleanExport, exportNormalizedResources, exportCopy);
+  cleanExport, exportCopy);
+
